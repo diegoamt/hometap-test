@@ -4,22 +4,23 @@ from fastapi import APIRouter
 from pydantic import BaseModel
 
 import httpx
+from config import settings
 
 router = APIRouter()
 
 async def fetch_provider_1(address: str) -> dict:
-    url_provider_1 = f"https://property-detail-api.fly.dev/provider-1/property?address={address}"
+    url_provider_1 = f"{settings.API_ENDPOINT_PROVIDER_1}?address={address}"
     headers = {
-        "X-API-KEY": "3e1a9f18-86c7-4e11-babe-4fd2c7e5e12d"
+        "X-API-KEY": settings.X_API_KEY_PROVIDER_1
     }
     async with httpx.AsyncClient() as client:
         response = await client.get(url_provider_1, headers=headers)
         return response.json()
 
 async def fetch_provider_2(address: str) -> dict:
-    url_provider_2 = "https://property-detail-api.fly.dev/provider-2/property?address={address}"
+    url_provider_2 = f"{settings.API_ENDPOINT_PROVIDER_2}/property?address={address}"
     headers = {
-        "X-API-KEY": "9f3b5c32-77a4-423c-b63f-90c123e6c1a8"
+        "X-API-KEY": settings.X_API_KEY_PROVIDER_2
     }
     async with httpx.AsyncClient() as client:
         response = await client.get(url_provider_2, headers=headers)

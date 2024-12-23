@@ -1,0 +1,22 @@
+# Virtual Environments
+venv/
+.env
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.iml
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Testing
+.coverage
+.coverage.*
+.cache
+pytest_cache/
+
+# Builds
+build/
+dist/
